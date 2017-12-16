@@ -21,11 +21,17 @@ public class Matrix{
     Matrix theMatrix = new Matrix(dim1, dim2);
 
     System.out.println("The generated matrix is:");
-    System.out.print(theMatrix);
+    System.out.println(theMatrix);
 
     System.out.println("Rotating the matrix clockwise 90 degrees...");
     System.out.println("The resulting matrix is:");
     theMatrix.rotateClockwise();
+    System.out.println(theMatrix);
+
+    System.out.println("Rotating the resulting matrix counter-clockwise 180 degrees...");
+    System.out.println("The resulting matrix is:");
+    theMatrix.rotateCounterClockwise();
+    theMatrix.rotateCounterClockwise();
     System.out.println(theMatrix);
   }
 
@@ -51,6 +57,17 @@ public class Matrix{
       }
       r++;
       y = newMatrix[0].length-1;
+    }
+    this.matrix = newMatrix;
+  }
+
+  // Another approach to matrix rotation; this one using less code and less memory
+  public void rotateCounterClockwise(){
+    int[][] newMatrix = new int[this.matrix[0].length][this.matrix.length];
+    for(int i = 0; i < this.matrix.length; i++){
+      for(int j = 0; j < this.matrix[0].length; j++){
+        newMatrix[this.matrix[0].length - 1 - j][i] = this.matrix[i][j];
+      }
     }
     this.matrix = newMatrix;
   }
